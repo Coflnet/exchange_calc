@@ -17,7 +17,7 @@ class ProductTile extends StatelessWidget {
         title: Text(item.name),
       ),
       body: Center(
-        child: Column(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
@@ -28,7 +28,10 @@ class ProductTile extends StatelessWidget {
               '$count',
               style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(
+              height: 10,
+              width: 20,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -48,7 +51,7 @@ class ProductTile extends StatelessWidget {
                   child: const Icon(Icons.remove),
                 ),
                 const SizedBox(width: 20),
-                FloatingActionButton(
+                FloatingActionButton.large(
                   onPressed: () {
                     // If the item is not in cart, we let the user add it.
                     // We are using context.read() here because the callback
@@ -57,6 +60,8 @@ class ProductTile extends StatelessWidget {
                     var cart = context.read<CartModel>();
                     cart.add(item);
                   },
+                  // make diameter bigger
+
                   child: const Icon(Icons.add),
                 ),
               ],
